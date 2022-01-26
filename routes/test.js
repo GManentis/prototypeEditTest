@@ -3,6 +3,27 @@ const router = express.Router();
 const myFirstMiddleware = require("../middleware/myFirstMiddleware");
 require("../utilities/myModule")();
 
+/*
+Important note:
+If we console.log the entire object that was product of class instatiation, with edited prototype the inserted property will not be displayed
+Yet if we console.log the property that was inserted via prototype ,the property will be displayed
+Example:
+
+function MyClass(prop1,prop2){
+    this.myProperty = myProp1;
+    this.myProperty2 = myProp2;
+}
+
+const myObj = new MyClass("p1","p2");
+MyClass.prototype.param3 = "p3";
+
+console.log(myObj); //The param3 property will not be included
+console.log(myObj.param3); // It will display p3
+
+
+
+*/
+
 router.get("/",async(req,res) => {
     const myPreArray = [];
     Array.prototype.consoleLog = function(){
